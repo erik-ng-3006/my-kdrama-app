@@ -1,0 +1,8 @@
+.main {
+	padding: 13rem;
+	min-height: 100vh;
+}
+.main h2 {
+	margin-bottom: 3rem;
+	font-weight: 300;
+}

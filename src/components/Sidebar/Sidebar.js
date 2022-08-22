@@ -1,0 +1,47 @@
+import React from 'react';
+import HomeIcon from '@mui/icons-material/Home';
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import ExploreIcon from '@mui/icons-material/Explore';
+import TvIcon from '@mui/icons-material/Tv';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import classes from './Sidebar.module.css';
+const Sidebar = () => {
+	return (
+		<div className={classes.sidebar}>
+			<ul>
+				<li>
+					<a href='/'>
+						<HomeIcon className={classes.icon} />
+						<span>Home</span>
+					</a>
+				</li>
+				<li>
+					<a href='/trending'>
+						<LocalFireDepartmentIcon className={classes.icon} />
+						<span>Trending</span>
+					</a>
+				</li>
+				<li>
+					<a href='/explore'>
+						<ExploreIcon className={classes.icon} />
+						<span>Explore</span>
+					</a>
+				</li>
+				<li>
+					<a href='/kdramas'>
+						<TvIcon className={classes.icon} />
+						<span>Kdramas</span>
+					</a>
+				</li>
+				<li>
+					<a href='/favorite'>
+						<FavoriteBorderIcon className={classes.icon} />
+						<span>Favorite</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	);
+};
+
+export default Sidebar;

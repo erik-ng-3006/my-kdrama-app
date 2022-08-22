@@ -1,0 +1,13 @@
+.header {
+	position: fixed;
+	z-index: 10000;
+	min-width: 100vw;
+	padding: 2rem 20rem;
+	display: flex;
+	justify-content: space-between;
+	background-color: #22223b;
+}
+.header h1 {
+	text-transform: uppercase;
+	font-weight: 100;
+}
