@@ -2,12 +2,18 @@
 	position: relative;
 	transition: all 300ms ease-out;
 }
+
+.listItem a {
+	text-decoration: none;
+	color: white;
+}
+
 .listItem:hover {
 	cursor: pointer;
 	transform: scale(1.1);
 }
 
-.listItem > div:first-child {
+.listItem div:first-child {
 	position: absolute;
 	bottom: 1rem;
 	left: 1rem;

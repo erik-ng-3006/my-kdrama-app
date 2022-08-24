@@ -5,7 +5,6 @@ import classes from './DramaList.module.css';
 const DramaList = () => {
 	const dramas = useSelector((state) => state.dramas.dramas);
 	const results = dramas.results || [];
-	console.log(results);
 
 	return (
 		<ul className={classes.dramaList}>

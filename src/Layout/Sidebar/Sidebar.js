@@ -7,7 +7,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import classes from './Sidebar.module.css';
 const Sidebar = () => {
 	return (
-		<div className={classes.sidebar}>
+		<nav className={classes.sidebar}>
 			<ul>
 				<li>
 					<a href='/'>
@@ -40,7 +40,7 @@ const Sidebar = () => {
 					</a>
 				</li>
 			</ul>
-		</div>
+		</nav>
 	);
 };
 

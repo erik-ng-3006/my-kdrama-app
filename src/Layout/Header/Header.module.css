@@ -5,7 +5,7 @@
 	padding: 2rem 20rem;
 	display: flex;
 	justify-content: space-between;
-	background-color: #22223b;
+	background-color: black;
 }
 .header h1 {
 	text-transform: uppercase;

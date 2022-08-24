@@ -1,14 +1,10 @@
 import React from 'react';
-import Header from '../components/Header/Header';
-import Sidebar from '../components/Sidebar/Sidebar';
-
+//import { useParams } from 'react-router-dom';
+import DramaDetail from '../components/DramaDetail/DramaDetail';
 const Drama = () => {
-	return (
-		<>
-			<Header />
-			<Sidebar />
-		</>
-	);
+	/* const params = useParams();
+	console.log(params); */
+	return <DramaDetail />;
 };
 
 export default Drama;

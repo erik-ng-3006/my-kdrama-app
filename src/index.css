@@ -11,13 +11,12 @@
 :root {
 	font-family: 'Poppins', sans-serif;
 	font-size: 62.5%;
-	--black: #22223b;
 }
 
 body {
 	box-sizing: border-box;
 	font-size: 1.6rem;
 	color: white;
-	background-color: var(--black);
+	background-color: black;
 	position: relative;
 }

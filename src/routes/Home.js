@@ -1,14 +1,10 @@
 import React from 'react';
-import Header from '../components/Header/Header';
-import MainContainer from '../components/MainContainer/MainContainer';
-import Sidebar from '../components/Sidebar/Sidebar';
-
+import DramaList from '../components/DramaList/DramaList';
 const Home = () => {
 	return (
 		<>
-			<Header />
-			<Sidebar />
-			<MainContainer />
+			<h2>Discover new dramas:</h2>
+			<DramaList />
 		</>
 	);
 };

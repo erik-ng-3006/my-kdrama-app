@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { DISCOVER_API_URL } from '../api/api';
+import { BASE_URL, API_KEY, DISCOVER_API_URL } from '../api/api';
 
 const initialState = {
 	dramas: {},
+	dramaDetail: {},
 	status: 'idle',
 	error: null,
 };
@@ -18,6 +19,19 @@ export const fetchDramas = createAsyncThunk('dramas/fetchDramas', async () => {
 		.then((response) => response.data)
 		.catch((err) => err.message);
 });
+export const fetchDramaDetail = createAsyncThunk(
+	'dramas/fetchDramaDetail',
+	async (dramaId) => {
+		const DRAMA_DETAIL_URL = `${BASE_URL}/tv/${dramaId}?${API_KEY}&append_to_response=videos,credits`;
+		return axios({
+			method: 'get',
+			url: DRAMA_DETAIL_URL,
+			responseType: 'json',
+		})
+			.then((response) => response.data)
+			.catch((err) => err.message);
+	}
+);
 
 export const dramaSlice = createSlice({
 	name: 'dramas',
@@ -35,6 +49,10 @@ export const dramaSlice = createSlice({
 			.addCase(fetchDramas.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error.message;
+			})
+			.addCase(fetchDramaDetail.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.dramaDetail = action.payload || {};
 			});
 	},
 });
