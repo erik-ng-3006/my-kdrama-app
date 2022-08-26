@@ -1,7 +1,10 @@
 import React from 'react';
 import classes from './TrailerSection.module.css';
 
-const TrailerSection = () => {
+const TrailerSection = ({ detail }) => {
+	const videos = detail.videos || {};
+	const videoResults = videos.results || [];
+
 	/* const onLoadHandler = function (event) {
 		event.target.style.height =
 			event.target.contentWindow.document.body.scrollHeight + 'px';
@@ -10,18 +13,16 @@ const TrailerSection = () => {
 		<section className={classes.trailerSection}>
 			<h4>Official Trailer Videos:</h4>
 			<ul>
-				<li>
-					<iframe
-						title='st'
-						src='https://www.youtube.com/embed/tgbNymZ7vqY'
-						//onLoad={onLoadHandler}
-					></iframe>
-					<iframe
-						title='st'
-						src='https://www.youtube.com/embed/tgbNymZ7vqY'
-						//onLoad={onLoadHandler}
-					></iframe>
-				</li>
+				{videoResults.map((video) => {
+					return (
+						<li key={video.id}>
+							<iframe
+								title='drama trailer'
+								src={`https://www.youtube.com/embed/${video.key}`}
+							/>
+						</li>
+					);
+				})}
 			</ul>
 		</section>
 	);

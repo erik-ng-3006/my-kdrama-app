@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
-import { fetchDramas } from './app/dramaSlice';
+import { fetchDramas, setDramas } from './app/dramaSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../src/routes/Home';
@@ -12,8 +12,14 @@ function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (dramasStatus === 'idle') {
-			dispatch(fetchDramas());
+		const dramasData = JSON.parse(localStorage.getItem('dramas'));
+
+		if (dramasData) {
+			dispatch(setDramas(dramasData));
+		} else {
+			if (dramasStatus === 'idle') {
+				dispatch(fetchDramas());
+			}
 		}
 	}, [dramasStatus, dispatch]);
 

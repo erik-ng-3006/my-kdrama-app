@@ -19,6 +19,7 @@ export const fetchDramas = createAsyncThunk('dramas/fetchDramas', async () => {
 		.then((response) => response.data)
 		.catch((err) => err.message);
 });
+
 export const fetchDramaDetail = createAsyncThunk(
 	'dramas/fetchDramaDetail',
 	async (dramaId) => {
@@ -36,7 +37,14 @@ export const fetchDramaDetail = createAsyncThunk(
 export const dramaSlice = createSlice({
 	name: 'dramas',
 	initialState,
-	reducers: {},
+	reducers: {
+		setDramas(state, action) {
+			state.dramas = action.payload;
+		},
+		setDramaDetail(state, action) {
+			state.dramaDetail = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchDramas.pending, (state, action) => {
@@ -45,6 +53,7 @@ export const dramaSlice = createSlice({
 			.addCase(fetchDramas.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.dramas = action.payload || {};
+				localStorage.setItem('dramas', JSON.stringify(action.payload));
 			})
 			.addCase(fetchDramas.rejected, (state, action) => {
 				state.status = 'failed';
@@ -53,6 +62,10 @@ export const dramaSlice = createSlice({
 			.addCase(fetchDramaDetail.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.dramaDetail = action.payload || {};
+				localStorage.setItem(
+					'drama-detail',
+					JSON.stringify(action.payload)
+				);
 			});
 	},
 });

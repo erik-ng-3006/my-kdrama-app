@@ -35,3 +35,6 @@
 	height: 100%;
 	margin-left: 10rem;
 }
+.dramaSection p {
+	max-width: 70%;
+}
