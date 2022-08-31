@@ -7,11 +7,14 @@ const DramaList = () => {
 	const results = dramas.results || [];
 
 	return (
-		<ul className={classes.dramaList}>
-			{results.map((drama) => {
-				return <DramaItem drama={drama} key={drama.id} />;
-			})}
-		</ul>
+		<section className={classes.dramaList} id='discover-section'>
+			<h2>Discover dramas:</h2>
+			<ul>
+				{results.map((drama) => {
+					return <DramaItem drama={drama} key={drama.id} />;
+				})}
+			</ul>
+		</section>
 	);
 };
 

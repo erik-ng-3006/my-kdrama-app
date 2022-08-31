@@ -1,24 +1,64 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { BASE_URL, API_KEY, DISCOVER_API_URL } from '../api/api';
+import {
+	BASE_URL,
+	API_KEY,
+	DISCOVER_API_URL,
+	TRENDING_API_URL,
+} from '../api/api';
 
 const initialState = {
 	dramas: {},
+	newDramas: {},
+	trendingDramas: {},
 	dramaDetail: {},
 	status: 'idle',
 	error: null,
 };
 
-export const fetchDramas = createAsyncThunk('dramas/fetchDramas', async () => {
-	return axios({
-		method: 'get',
-		url: DISCOVER_API_URL,
-		responseType: 'json',
-	})
-		.then((response) => response.data)
-		.catch((err) => err.message);
-});
+export const fetchDramas = createAsyncThunk(
+	'dramas/fetchDramas',
+	async (url) => {
+		return axios({
+			method: 'get',
+			url: url || DISCOVER_API_URL,
+			responseType: 'json',
+		})
+			.then((response) => response.data)
+			.catch((err) => err.message);
+	}
+);
+export const fetchNewDramas = createAsyncThunk(
+	'dramas/fetchNewDramas',
+	async () => {
+		const date = new Date();
+		return axios({
+			method: 'get',
+			url:
+				DISCOVER_API_URL +
+				'&sort_by=release_date.desc' +
+				`&first_air_date_year=${date.getFullYear()}` +
+				'&page=2',
+			responseType: 'json',
+		})
+			.then((response) => response.data)
+			.catch((err) => err.message);
+	}
+);
+
+export const fetchTrendingDramas = createAsyncThunk(
+	'dramas/fetchTrendingDramas',
+	async () => {
+		return axios({
+			method: 'get',
+			url: TRENDING_API_URL,
+			responseType: 'json',
+		})
+			.then((response) => response.data)
+			.catch((err) => err.message);
+	}
+);
 
 export const fetchDramaDetail = createAsyncThunk(
 	'dramas/fetchDramaDetail',
@@ -52,20 +92,35 @@ export const dramaSlice = createSlice({
 			})
 			.addCase(fetchDramas.fulfilled, (state, action) => {
 				state.status = 'success';
-				state.dramas = action.payload || {};
-				localStorage.setItem('dramas', JSON.stringify(action.payload));
+				state.dramas = action.payload;
+				//localStorage.setItem('dramas', JSON.stringify(action.payload));
 			})
 			.addCase(fetchDramas.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error.message;
 			})
+			.addCase(fetchDramaDetail.pending, (state, action) => {
+				state.status = 'loading';
+			})
 			.addCase(fetchDramaDetail.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.dramaDetail = action.payload || {};
-				localStorage.setItem(
+				/* localStorage.setItem(
 					'drama-detail',
 					JSON.stringify(action.payload)
-				);
+				); */
+			})
+			.addCase(fetchDramaDetail.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.error.message;
+			})
+			.addCase(fetchNewDramas.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.newDramas = action.payload;
+			})
+			.addCase(fetchTrendingDramas.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.trendingDramas = action.payload;
 			});
 	},
 });

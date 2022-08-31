@@ -14,17 +14,12 @@ const DramaItem = ({ drama }) => {
 		.map((genre) => genres[genre])
 		.join(', ');
 
-	/* const handleItemOnClick = function (id) {
-		//dispatch(fetchDramaDetail(id));
+	const itemOnclickHandler = function () {
+		dispatch(fetchDramaDetail(id));
 	};
- */
+
 	return (
-		<li
-			className={classes.listItem}
-			onClick={() => {
-				dispatch(fetchDramaDetail(id));
-			}}
-		>
+		<li className={classes.listItem} onClick={itemOnclickHandler}>
 			<Link to={`/dramas/${id}`}>
 				<div>
 					<h3>{name}</h3>

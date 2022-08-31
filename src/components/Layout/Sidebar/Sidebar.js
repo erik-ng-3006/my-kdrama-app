@@ -22,7 +22,7 @@ const Sidebar = () => {
 					</a>
 				</li>
 				<li>
-					<a href='/explore'>
+					<a href='#discover-section'>
 						<ExploreIcon className={classes.icon} />
 						<span>Explore</span>
 					</a>

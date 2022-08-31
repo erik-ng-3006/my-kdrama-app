@@ -9,6 +9,7 @@ const TrailerSection = ({ detail }) => {
 		event.target.style.height =
 			event.target.contentWindow.document.body.scrollHeight + 'px';
 	}; */
+
 	return (
 		<section className={classes.trailerSection}>
 			<h4>Official Trailer Videos:</h4>

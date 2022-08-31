@@ -8,9 +8,9 @@ import TrailerSection from './TrailerSection/TrailerSection';
 const DramaDetail = () => {
 	//back drop logic???
 	const detail = useSelector((state) => state.dramas.dramaDetail);
-	if (Object.keys(detail) === 0) {
+	/* if (Object.keys(detail) === 0) {
 		Object.assign(detail, JSON.parse(localStorage.getItem('drama-detail')));
-	}
+	} */
 
 	const backdropPath = detail['backdrop_path'] || '';
 	const backdrop =

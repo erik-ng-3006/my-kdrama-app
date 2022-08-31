@@ -1,0 +1,36 @@
+.newDramaItem {
+	transition: all 300ms ease-out;
+}
+.newDramaItem img {
+	height: 100%;
+	width: auto;
+}
+.newDramaItem a {
+	text-decoration: none;
+	color: white;
+}
+
+.newDramaItem:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.newDramaItem div:first-child {
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+	z-index: 100;
+}
+
+.newDramaItem .backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	transition: background-color 300ms ease-out;
+}
+.newDramaItem:hover .backdrop {
+	background-color: rgba(0, 0, 0, 0.1);
+}
