@@ -1,7 +1,4 @@
 .dramaList {
-	padding-top: 8rem;
-}
-.dramaList ul {
 	list-style: none;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);

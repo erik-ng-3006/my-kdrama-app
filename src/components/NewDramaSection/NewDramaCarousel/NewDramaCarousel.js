@@ -1,30 +1,29 @@
 import React from 'react';
+import classes from './NewDramaCarousel.module.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDramaDetail, genres } from '../../app/dramaSlice';
+import { fetchDramaDetail, genres } from '../../../app/dramaSlice';
 import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
-import classes from './TrendingDramaCarousel.module.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
+const NewDramaCarousel = () => {
+	const newDramas = useSelector((state) => state.dramas.newDramas);
+	console.log(newDramas);
 
-const TrendingDramaCarousel = () => {
-	const trendingDramas = useSelector((state) => state.dramas.trendingDramas);
 	const dispatch = useDispatch();
-	console.log(trendingDramas);
-
 	return (
 		<Swiper
 			autoplay={true}
 			modules={[Autoplay]}
-			className={classes.trendingDramas}
+			className={classes.newDramaCarousel}
 			spaceBetween={10}
 			slidesPerView={5}
 			//onSlideChange={() => console.log('slide change')}
 			//onSwiper={(swiper) => console.log(swiper)}
 		>
-			{trendingDramas.results &&
-				trendingDramas.results.map((dramaData) => {
+			{newDramas.results &&
+				newDramas.results.map((dramaData) => {
 					const {
 						id,
 						name,
@@ -46,7 +45,7 @@ const TrendingDramaCarousel = () => {
 					return (
 						<SwiperSlide
 							key={id}
-							className={classes.trendingDramasItem}
+							className={classes.newDramaItem}
 							onClick={slideClickHandler}
 						>
 							<Link to={`/dramas/${id}`}>
@@ -72,4 +71,4 @@ const TrendingDramaCarousel = () => {
 	);
 };
 
-export default TrendingDramaCarousel;
+export default NewDramaCarousel;

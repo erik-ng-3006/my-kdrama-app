@@ -16,7 +16,7 @@ const Sidebar = () => {
 					</a>
 				</li>
 				<li>
-					<a href='/trending'>
+					<a href='#trending-section'>
 						<LocalFireDepartmentIcon className={classes.icon} />
 						<span>Trending</span>
 					</a>
@@ -28,7 +28,7 @@ const Sidebar = () => {
 					</a>
 				</li>
 				<li>
-					<a href='/kdramas'>
+					<a href='#new-drama-section'>
 						<TvIcon className={classes.icon} />
 						<span>Kdramas</span>
 					</a>

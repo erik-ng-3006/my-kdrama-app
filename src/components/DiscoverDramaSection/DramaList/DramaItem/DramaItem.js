@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './DramaItem.module.css';
-import { genres } from '../../../app/dramaSlice';
+import { genres } from '../../../../app/dramaSlice';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchDramaDetail } from '../../../app/dramaSlice';
+import { fetchDramaDetail } from '../../../../app/dramaSlice';
 
 const DramaItem = ({ drama }) => {
 	const dispatch = useDispatch();
