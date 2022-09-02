@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import classes from './SearchBar.module.css';
-//import SearchList from './SearchList/SearchList';
+import SearchList from './SearchList/SearchList';
 import { useDispatch } from 'react-redux';
 import { fetchSearchDramas } from '../../../../app/dramaSlice';
 import { API_KEY, BASE_URL } from '../../../../api/api';
