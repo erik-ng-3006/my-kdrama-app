@@ -4,11 +4,13 @@
 }
 
 .newDramaItem {
+	height: 100%;
 	transition: all 300ms ease-out;
 }
 .newDramaItem img {
 	width: 100%;
-	height: fit-content(20em);
+	height: 100%;
+	object-fit: cover;
 }
 .newDramaItem a {
 	text-decoration: none;

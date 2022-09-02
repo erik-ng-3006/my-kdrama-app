@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 const NewDramaCarousel = () => {
 	const newDramas = useSelector((state) => state.dramas.newDramas);
-	console.log(newDramas);
 
 	const dispatch = useDispatch();
 	return (
@@ -56,7 +55,7 @@ const NewDramaCarousel = () => {
 								</div>
 								<img
 									src={
-										posterPath === null
+										!posterPath
 											? '/img/no-image.jpeg'
 											: `https://image.tmdb.org/t/p/w500/${posterPath}`
 									}

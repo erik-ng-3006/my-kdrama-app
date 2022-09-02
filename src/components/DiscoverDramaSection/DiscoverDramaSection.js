@@ -9,9 +9,10 @@ import classes from './DiscoverDramaSection.module.css';
 const DiscoverDramaSection = () => {
 	const dramas = useSelector((state) => state.dramas.dramas);
 	const dispatch = useDispatch();
-
+	const { page, total_page: totalPage } = dramas;
 	const btnClickHandler = () => {
-		const url = DISCOVER_API_URL + `&page=${dramas.page + 1}`;
+		const url =
+			DISCOVER_API_URL + `&page=${page === totalPage ? 1 : page + 1}`;
 
 		dispatch(fetchDramas(url));
 	};

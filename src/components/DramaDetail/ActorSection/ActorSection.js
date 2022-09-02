@@ -8,14 +8,14 @@ const ActorSection = ({ detail }) => {
 			<h4>Casts</h4>
 			<ul>
 				{cast.map((person) => {
+					const { id, name, profile_path: profilePath } = person;
+					const source = profilePath
+						? `https://image.tmdb.org/t/p/original/${profilePath}`
+						: '/img/default-profile.png';
 					return (
-						<li key={person.id}>
-							<img
-								src={`https://image.tmdb.org/t/p/original/${person['profile_path']}`}
-								alt='actor'
-								width='100px'
-							/>
-							<h5>{person.name}</h5>
+						<li key={id}>
+							<img src={source} alt='actor' width='100px' />
+							<h5>{name}</h5>
 						</li>
 					);
 				})}

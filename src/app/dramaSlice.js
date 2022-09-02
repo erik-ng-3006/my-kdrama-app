@@ -12,23 +12,22 @@ const initialState = {
 	dramas: {},
 	newDramas: {},
 	trendingDramas: {},
+	searchedDramas: {},
 	dramaDetail: {},
 	status: 'idle',
 	error: null,
 };
 
-export const fetchDramas = createAsyncThunk(
-	'dramas/fetchDramas',
-	async (url) => {
-		return axios({
-			method: 'get',
-			url: url || DISCOVER_API_URL,
-			responseType: 'json',
-		})
-			.then((response) => response.data)
-			.catch((err) => err.message);
-	}
-);
+export const fetchDramas = createAsyncThunk('dramas/fetchDramas', async () => {
+	const randomPage = Math.floor(Math.random() * 6 + 1);
+	return axios({
+		method: 'get',
+		url: DISCOVER_API_URL + `&page=${randomPage}`,
+		responseType: 'json',
+	})
+		.then((response) => response.data)
+		.catch((err) => err.message);
+});
 export const fetchNewDramas = createAsyncThunk(
 	'dramas/fetchNewDramas',
 	async () => {
@@ -67,6 +66,19 @@ export const fetchDramaDetail = createAsyncThunk(
 		return axios({
 			method: 'get',
 			url: DRAMA_DETAIL_URL,
+			responseType: 'json',
+		})
+			.then((response) => response.data)
+			.catch((err) => err.message);
+	}
+);
+
+export const fetchSearchDramas = createAsyncThunk(
+	'dramas/fetchSearchDramas',
+	async (url) => {
+		return axios({
+			method: 'get',
+			url,
 			responseType: 'json',
 		})
 			.then((response) => response.data)
@@ -121,6 +133,10 @@ export const dramaSlice = createSlice({
 			.addCase(fetchTrendingDramas.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.trendingDramas = action.payload;
+			})
+			.addCase(fetchSearchDramas.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.searchedDramas = action.payload;
 			});
 	},
 });
