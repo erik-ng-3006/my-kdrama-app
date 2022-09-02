@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 const SearchBar = () => {
 	const inputRef = useRef(null);
 	const dispatch = useDispatch();
-	const searchedDramas = useSelector((state) => state.dramas.searchedDramas);
+	//const searchedDramas = useSelector((state) => state.dramas.searchedDramas);
 	//const { results } = searchedDramas;
 
 	const inputChangeHandler = (e) => {
