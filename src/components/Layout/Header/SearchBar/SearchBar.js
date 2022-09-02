@@ -5,13 +5,13 @@ import classes from './SearchBar.module.css';
 import { useDispatch } from 'react-redux';
 import { fetchSearchDramas } from '../../../../app/dramaSlice';
 import { API_KEY, BASE_URL } from '../../../../api/api';
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const SearchBar = () => {
 	const inputRef = useRef(null);
 	const dispatch = useDispatch();
-	//const searchedDramas = useSelector((state) => state.dramas.searchedDramas);
-	//const { results } = searchedDramas;
+	const searchedDramas = useSelector((state) => state.dramas.searchedDramas);
+	const { results } = searchedDramas;
 
 	const inputChangeHandler = (e) => {
 		const query = e.target.value
@@ -34,6 +34,7 @@ const SearchBar = () => {
 			) : (
 				<SearchList dramas={results} />
 			)} */}
+			{results && <SearchList dramas={results} />}
 		</div>
 	);
 };
