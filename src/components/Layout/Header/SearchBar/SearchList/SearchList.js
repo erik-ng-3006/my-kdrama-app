@@ -7,7 +7,7 @@ const SearchList = ({ dramas }) => {
 		<ul className={classes.searchList}>
 			{dramas &&
 				dramas.slice(0, 5).map((drama) => {
-					return <SearchItem drama={drama} />;
+					return <SearchItem key={drama.id} drama={drama} />;
 				})}
 		</ul>
 	);

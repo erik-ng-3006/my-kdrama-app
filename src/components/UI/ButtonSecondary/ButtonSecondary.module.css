@@ -1,0 +1,13 @@
+.buttonSecondary {
+	background-color: #3b71ca;
+	color: white;
+	border: none;
+	border-radius: 10rem;
+	padding: 1rem 1.5rem;
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+		rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+.buttonSecondary:hover {
+	cursor: pointer;
+}

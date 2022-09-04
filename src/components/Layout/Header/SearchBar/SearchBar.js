@@ -11,6 +11,7 @@ const SearchBar = () => {
 	const inputRef = useRef(null);
 	const dispatch = useDispatch();
 	const searchedDramas = useSelector((state) => state.dramas.searchedDramas);
+
 	const { results } = searchedDramas;
 
 	const inputChangeHandler = (e) => {
@@ -29,11 +30,9 @@ const SearchBar = () => {
 				onChange={inputChangeHandler}
 			></input>
 			<SearchIcon className={classes.icon} />
-			{/* {!inputRef.current.value && !results ? (
-				<div>No drama found!!!!!</div>
-			) : (
-				<SearchList dramas={results} />
-			)} */}
+			{inputRef.current !== null && results && results.length === 0 && (
+				<div style={{ color: 'white' }}>No drama found!!!!</div>
+			)}
 			{results && <SearchList dramas={results} />}
 		</div>
 	);
