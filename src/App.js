@@ -11,6 +11,7 @@ import Home from '../src/routes/Home';
 import Layout from './components/Layout/Layout';
 import Drama from './routes/Drama';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import Favorite from './routes/Favorite';
 
 function App() {
 	const dramasStatus = useSelector((state) => state.dramas.status);
@@ -37,6 +38,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home />}></Route>
 					<Route path='dramas/:dramaId' element={<Drama />}></Route>
+					<Route path='favorite' element={<Favorite />} />
 					<Route
 						path='*'
 						element={

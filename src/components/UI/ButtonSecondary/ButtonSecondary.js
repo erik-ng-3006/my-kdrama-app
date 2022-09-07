@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './ButtonSecondary.module.css';
 
-const ButtonSecondary = (props) => {
-	const styles = classes.buttonSecondary + ' ' + props.className;
+const ButtonSecondary = ({ children, className, onClick, ...rest }) => {
+	const styles = classes.buttonSecondary + ' ' + className;
 	return (
-		<button className={styles} onClick={props.onClick}>
-			{props.children}
+		<button className={styles} onClick={onClick} {...rest}>
+			{children}
 		</button>
 	);
 };

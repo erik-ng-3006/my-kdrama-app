@@ -22,15 +22,15 @@ const Sidebar = () => {
 					</a>
 				</li>
 				<li>
-					<a href='#discover-section'>
-						<ExploreIcon className={classes.icon} />
-						<span>Explore</span>
-					</a>
-				</li>
-				<li>
 					<a href='#new-drama-section'>
 						<TvIcon className={classes.icon} />
 						<span>Kdramas</span>
+					</a>
+				</li>
+				<li>
+					<a href='#discover-section'>
+						<ExploreIcon className={classes.icon} />
+						<span>Explore</span>
 					</a>
 				</li>
 				<li>

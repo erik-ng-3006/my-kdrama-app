@@ -1,0 +1,7 @@
+.heartButton {
+	border: none;
+	background-color: transparent;
+}
+.heartButton:hover {
+	cursor: pointer;
+}

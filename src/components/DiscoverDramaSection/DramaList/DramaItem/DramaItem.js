@@ -15,6 +15,7 @@ const DramaItem = ({ drama }) => {
 		original_name: originalName,
 		poster_path: posterPath,
 	} = drama;
+
 	const genresString = genre_ids
 		.filter((genre) => genres.hasOwnProperty(genre) && genre)
 		.map((genre) => genres[genre])

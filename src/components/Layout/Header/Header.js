@@ -12,7 +12,10 @@ const Header = () => {
 	};
 	return (
 		<header className={classes.header}>
-			<h1>My K/Dramas</h1>
+			<div>
+				<img src='/img/logo-icon-80.png' alt='logo' />
+				<h1>My K-Dramas</h1>
+			</div>
 			<div>
 				<SearchBar />
 				<ButtonSecondary onClick={buttonClickHandler}>

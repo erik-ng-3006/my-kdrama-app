@@ -14,6 +14,7 @@ const initialState = {
 	trendingDramas: {},
 	searchedDramas: {},
 	dramaDetail: {},
+	favoriteList: [],
 	status: 'idle',
 	error: null,
 };
@@ -96,6 +97,9 @@ export const dramaSlice = createSlice({
 		setDramaDetail(state, action) {
 			state.dramaDetail = action.payload;
 		},
+		addFavoriteDrama(state, action) {
+			state.favoriteList = [...state.favoriteList, action.payload];
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -141,7 +145,8 @@ export const dramaSlice = createSlice({
 	},
 });
 
-export const { setDramas } = dramaSlice.actions;
+export const { setDramas, setDramaDetail, addFavoriteDrama } =
+	dramaSlice.actions;
 
 export default dramaSlice.reducer;
 

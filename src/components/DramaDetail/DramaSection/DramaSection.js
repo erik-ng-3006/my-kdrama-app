@@ -1,8 +1,13 @@
 import React from 'react';
 import classes from './DramaSection.module.css';
 import Rating from '@mui/material/Rating';
+import HeartButton from '../../UI/HeartButton/HeartButton';
+import { useDispatch } from 'react-redux';
+import { addFavoriteDrama } from '../../../app/dramaSlice';
 
 const DramaSection = ({ detail }) => {
+	const dispatch = useDispatch();
+
 	const {
 		name,
 		original_name: originalName,
@@ -10,11 +15,18 @@ const DramaSection = ({ detail }) => {
 		poster_path: posterPath,
 		vote_average: rating,
 	} = detail;
+
 	const genres = detail.genres || [];
 
-	const convertedRating = (rating / 2).toFixed(1);
+	const convertedRating = parseInt((rating / 2).toFixed(1));
+
+	const favoriteButtonClickHandler = () => {
+		dispatch(addFavoriteDrama(detail));
+	};
+
 	return (
 		<section className={classes.dramaSection}>
+			<HeartButton onClick={favoriteButtonClickHandler} />
 			<img
 				src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
 				alt='drama poster'
@@ -39,7 +51,6 @@ const DramaSection = ({ detail }) => {
 						return <li key={genre.id}>{genre.name}</li>;
 					})}
 				</ul>
-
 				<div>
 					<p>{overview}</p>
 				</div>

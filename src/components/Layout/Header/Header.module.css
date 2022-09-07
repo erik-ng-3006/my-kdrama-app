@@ -7,9 +7,14 @@
 	justify-content: space-between;
 	background-color: black;
 }
+
+.header img {
+	max-width: 4rem;
+}
 .header h1 {
+	font-family: 'Pacifico', cursive;
 	text-transform: uppercase;
-	font-weight: 100;
+	font-size: 2.5rem;
 }
 
 .header > div {

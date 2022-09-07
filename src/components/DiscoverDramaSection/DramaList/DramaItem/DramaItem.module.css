@@ -37,3 +37,15 @@
 	width: 100%;
 	height: 100%;
 }
+
+.listItem svg {
+	color: white;
+	font-size: 3rem;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
+
+.listItem.favorite svg {
+	background-color: pink;
+}
