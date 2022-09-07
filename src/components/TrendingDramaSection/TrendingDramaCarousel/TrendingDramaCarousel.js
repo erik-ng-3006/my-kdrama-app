@@ -7,18 +7,30 @@ import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 import classes from './TrendingDramaCarousel.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
 const TrendingDramaCarousel = () => {
 	const trendingDramas = useSelector((state) => state.dramas.trendingDramas);
 	const dispatch = useDispatch();
-
+	const { width } = useWindowDimensions();
+	const isSmallScreen = width < 500;
+	const isMediumScreen = width < 768;
+	const isLargeScreenDevice = width < 1050;
 	return (
 		<Swiper
 			autoplay={true}
 			modules={[Autoplay]}
 			className={classes.trendingDramas}
 			spaceBetween={10}
-			slidesPerView={5}
+			slidesPerView={
+				!isLargeScreenDevice
+					? 5
+					: !isMediumScreen
+					? 4
+					: !isSmallScreen
+					? 3
+					: 2
+			}
 			//onSlideChange={() => console.log('slide change')}
 			//onSwiper={(swiper) => console.log(swiper)}
 		>

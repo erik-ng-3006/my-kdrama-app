@@ -7,6 +7,15 @@
 	text-decoration: none;
 	color: white;
 }
+.listItem h3 {
+	font-size: 1.8rem;
+}
+.listItem h4 {
+	font-size: 1.4rem;
+}
+.listItem p {
+	font-size: 1.4rem;
+}
 
 .listItem:hover {
 	cursor: pointer;
@@ -48,4 +57,16 @@
 
 .listItem.favorite svg {
 	background-color: pink;
+}
+
+@media (max-width: 768px) {
+	.listItem h3 {
+		font-size: 1.5rem;
+	}
+	.listItem h4 {
+		font-size: 1.2rem;
+	}
+	.listItem p {
+		font-size: 1.2rem;
+	}
 }

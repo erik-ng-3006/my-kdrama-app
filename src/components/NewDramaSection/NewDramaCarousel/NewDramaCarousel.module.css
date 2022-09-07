@@ -16,6 +16,15 @@
 	text-decoration: none;
 	color: white;
 }
+.newDramaItem h3 {
+	font-size: 1.8rem;
+}
+.newDramaItem h4 {
+	font-size: 1.4rem;
+}
+.newDramaItem p {
+	font-size: 1.4rem;
+}
 
 .newDramaItem:hover {
 	cursor: pointer;
@@ -40,4 +49,16 @@
 }
 .newDramaItem:hover .backdrop {
 	background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1050px) {
+	.newDramaItem h3 {
+		font-size: 1.5rem;
+	}
+	.newDramaItem h4 {
+		font-size: 1.2rem;
+	}
+	.newDramaItem p {
+		font-size: 1.2rem;
+	}
 }

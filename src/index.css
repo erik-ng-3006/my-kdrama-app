@@ -35,3 +35,9 @@ body {
 .mg-bt-md {
 	margin-bottom: 5rem;
 }
+
+@media (max-width: 500px) {
+	h2 {
+		font-size: 1.8rem;
+	}
+}

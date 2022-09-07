@@ -5,3 +5,16 @@
 	gap: 3rem;
 	margin-bottom: 10rem;
 }
+
+@media (max-width: 1050px) {
+	.dramaList {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 500px) {
+	.dramaList {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+}

@@ -30,3 +30,9 @@
 .icon {
 	font-size: 3rem !important;
 }
+
+@media (max-width: 768px) {
+	.sidebar {
+		display: none;
+	}
+}

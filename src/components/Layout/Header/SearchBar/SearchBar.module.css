@@ -28,3 +28,14 @@
 	right: 1rem;
 	font-size: 2rem !important;
 }
+
+@media (max-width: 1050px) {
+	.searchBar input {
+		width: 20rem;
+	}
+}
+@media (max-width: 768px) {
+	.searchBar input {
+		width: 15rem;
+	}
+}

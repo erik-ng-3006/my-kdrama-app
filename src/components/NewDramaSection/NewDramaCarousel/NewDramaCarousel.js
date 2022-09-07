@@ -7,8 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchDramaDetail, genres } from '../../../app/dramaSlice';
 import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
+
 const NewDramaCarousel = () => {
 	const newDramas = useSelector((state) => state.dramas.newDramas);
+	const { width } = useWindowDimensions();
+	const isSmallScreen = width < 500;
+	const isMediumScreen = width < 768;
+	const isLargeScreenDevice = width < 1050;
 
 	const dispatch = useDispatch();
 	return (
@@ -17,7 +23,15 @@ const NewDramaCarousel = () => {
 			modules={[Autoplay]}
 			className={classes.newDramaCarousel}
 			spaceBetween={10}
-			slidesPerView={5}
+			slidesPerView={
+				!isLargeScreenDevice
+					? 5
+					: !isMediumScreen
+					? 4
+					: !isSmallScreen
+					? 3
+					: 2
+			}
 			//onSlideChange={() => console.log('slide change')}
 			//onSwiper={(swiper) => console.log(swiper)}
 		>
