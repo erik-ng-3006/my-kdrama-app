@@ -1,10 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+//import { useSelector } from 'react-redux';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/firebase';
 //import Button from '../components/UI/Button/Button';
 
 const Favorite = () => {
-	const favoriteList = useSelector((state) => state.dramas.favoriteList);
-	console.log(favoriteList);
+	//const favoriteList = useSelector((state) => state.dramas.favoriteList);
+	useEffect(() => {
+		const getFavoriteData = async () => {
+			const querySnapshot = await getDocs(
+				collection(db, 'favorite-dramas')
+			);
+			console.log(querySnapshot);
+		};
+		getFavoriteData();
+	});
 	return (
 		<section>
 			{/* 	<div style={{ textAlign: 'center' }}>

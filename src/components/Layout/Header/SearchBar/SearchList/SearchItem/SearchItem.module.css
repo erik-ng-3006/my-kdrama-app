@@ -1,0 +1,38 @@
+.searchItem {
+	transition: color 300ms ease-out;
+}
+.searchItem a {
+	display: flex;
+	color: white;
+	text-decoration: none;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2rem;
+	margin-bottom: 2rem;
+}
+
+.searchItem a h3 {
+	font-size: 1.8rem;
+	font-weight: 400;
+}
+.searchItem a img {
+	max-width: 4.5rem;
+	width: 100%;
+	height: auto;
+}
+
+.searchItem:hover a {
+	color: #3b71ca;
+}
+
+@media (max-width: 1050px) {
+	.searchItem a h3 {
+		font-size: 1.6rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.searchItem a h3 {
+		font-size: 1.4rem;
+	}
+}

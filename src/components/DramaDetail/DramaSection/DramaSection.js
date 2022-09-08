@@ -2,11 +2,14 @@ import React from 'react';
 import classes from './DramaSection.module.css';
 import Rating from '@mui/material/Rating';
 import HeartButton from '../../UI/HeartButton/HeartButton';
-import { useDispatch } from 'react-redux';
-import { addFavoriteDrama } from '../../../app/dramaSlice';
+//import { useDispatch } from 'react-redux';
+//import { addFavoriteDrama } from '../../../app/dramaSlice';
+import { setDoc, doc } from 'firebase/firestore';
+
+import { db } from '../../../firebase/firebase';
 
 const DramaSection = ({ detail }) => {
-	const dispatch = useDispatch();
+	//const dispatch = useDispatch();
 
 	const {
 		name,
@@ -15,13 +18,16 @@ const DramaSection = ({ detail }) => {
 		poster_path: posterPath,
 		vote_average: rating,
 	} = detail;
-
 	const genres = detail.genres || [];
 
 	const convertedRating = parseInt((rating / 2).toFixed(1));
 
-	const favoriteButtonClickHandler = () => {
-		dispatch(addFavoriteDrama(detail));
+	const favoriteButtonClickHandler = async () => {
+		try {
+			await setDoc(doc(db, 'favorite-dramas', name), detail);
+		} catch (e) {
+			console.error('Error adding document: ', e);
+		}
 	};
 
 	return (

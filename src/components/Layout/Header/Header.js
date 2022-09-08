@@ -18,7 +18,10 @@ const Header = () => {
 			</div>
 			<div>
 				<SearchBar />
-				<ButtonSecondary onClick={buttonClickHandler}>
+				<ButtonSecondary
+					onClick={buttonClickHandler}
+					className={classes.btn}
+				>
 					Login
 				</ButtonSecondary>
 			</div>

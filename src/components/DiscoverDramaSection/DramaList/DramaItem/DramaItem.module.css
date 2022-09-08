@@ -19,7 +19,8 @@
 
 .listItem:hover {
 	cursor: pointer;
-	transform: scale(1.1);
+	transform: scale(1.05);
+	z-index: 100;
 }
 
 .listItem div:first-child {
@@ -68,5 +69,8 @@
 	}
 	.listItem p {
 		font-size: 1.2rem;
+	}
+	.listItem:hover {
+		transform: scale(1.05);
 	}
 }

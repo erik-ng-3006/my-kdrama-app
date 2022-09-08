@@ -42,3 +42,13 @@
 		max-width: 3rem;
 	}
 }
+
+@media (max-width: 500px) {
+	.btn {
+		display: none;
+	}
+
+	.header {
+		padding: 2rem 1rem;
+	}
+}
