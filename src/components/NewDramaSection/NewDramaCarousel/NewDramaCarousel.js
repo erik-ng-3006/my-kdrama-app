@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDramaDetail, genres } from '../../../app/dramaSlice';
+import { fetchDramaDetail, genresList } from '../../../app/dramaSlice';
 import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
@@ -46,9 +46,9 @@ const NewDramaCarousel = () => {
 					} = dramaData;
 					const genresString = genreIds
 						.filter(
-							(genre) => genres.hasOwnProperty(genre) && genre
+							(genre) => genresList.hasOwnProperty(genre) && genre
 						)
-						.map((genre) => genres[genre])
+						.map((genre) => genresList[genre])
 						.join(', ');
 
 					const slideClickHandler = () => {

@@ -2,37 +2,43 @@ import React from 'react';
 import classes from './DramaSection.module.css';
 import Rating from '@mui/material/Rating';
 import HeartButton from '../../UI/HeartButton/HeartButton';
-//import { useDispatch } from 'react-redux';
-//import { addFavoriteDrama } from '../../../app/dramaSlice';
-import { setDoc, doc } from 'firebase/firestore';
 
-import { db } from '../../../firebase/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavoriteItem } from '../../../app/dramaSlice';
 
 const DramaSection = ({ detail }) => {
-	//const dispatch = useDispatch();
+	const dispatch = useDispatch();
+
+	const favoriteDramas = useSelector((state) => state.dramas.favoriteDramas);
 
 	const {
+		id,
 		name,
 		original_name: originalName,
 		overview,
 		poster_path: posterPath,
 		vote_average: rating,
+		genres = [],
 	} = detail;
-	const genres = detail.genres || [];
+	//const genres = detail.genres || [];
 
 	const convertedRating = parseInt((rating / 2).toFixed(1));
 
+	//Check if the drama is already on the favorite list
+	const isOnFavoriteList = favoriteDramas.some((drama) => drama.id === id);
+	console.log(isOnFavoriteList);
+
+	//Add drama to firestore
 	const favoriteButtonClickHandler = async () => {
-		try {
-			await setDoc(doc(db, 'favorite-dramas', name), detail);
-		} catch (e) {
-			console.error('Error adding document: ', e);
-		}
+		dispatch(addFavoriteItem(detail, id));
 	};
 
 	return (
 		<section className={classes.dramaSection}>
-			<HeartButton onClick={favoriteButtonClickHandler} />
+			<HeartButton
+				isChecked={isOnFavoriteList}
+				onClick={favoriteButtonClickHandler}
+			/>
 			<img
 				src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
 				alt='drama poster'

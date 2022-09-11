@@ -49,15 +49,12 @@
 }
 
 .listItem svg {
-	color: white;
+	color: #e63946;
 	font-size: 3rem;
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
-}
-
-.listItem.favorite svg {
-	background-color: pink;
+	bottom: -4rem;
+	right: 50%;
+	translate: 50%;
 }
 
 @media (max-width: 768px) {

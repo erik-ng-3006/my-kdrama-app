@@ -11,6 +11,7 @@ const HeartButton = ({ isChecked = false, onClick, ...rest }) => {
 		transition: 'all 300ms ease-out ',
 		opacity: `${isChecked ? '1' : '0'}`,
 	});
+
 	const [uncheckedHeartStyle, setUncheckedHeartStyle] = useState({
 		fontSize: '3rem',
 		color: 'white',

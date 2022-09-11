@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './App.css';
 import {
 	fetchDramas,
+	fetchFavoriteDramas,
 	fetchNewDramas,
 	fetchTrendingDramas,
 } from './app/dramaSlice';
@@ -27,6 +28,7 @@ function App() {
 			dispatch(fetchDramas());
 			dispatch(fetchTrendingDramas());
 			dispatch(fetchNewDramas());
+			dispatch(fetchFavoriteDramas());
 		}
 		//}
 	}, [dramasStatus, dispatch]);

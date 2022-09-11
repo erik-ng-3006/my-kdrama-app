@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { collection, getDocs } from 'firebase/firestore';
+import { doc, deleteDoc, setDoc } from 'firebase/firestore';
+
 import axios from 'axios';
 import {
 	BASE_URL,
@@ -8,13 +11,15 @@ import {
 	TRENDING_API_URL,
 } from '../api/api';
 
+import { db } from '../firebase/firebase';
+
 const initialState = {
 	dramas: {},
 	newDramas: {},
 	trendingDramas: {},
 	searchedDramas: {},
 	dramaDetail: {},
-	favoriteList: [],
+	favoriteDramas: [],
 	status: 'idle',
 	error: null,
 };
@@ -87,6 +92,34 @@ export const fetchSearchDramas = createAsyncThunk(
 	}
 );
 
+export const fetchFavoriteDramas = createAsyncThunk(
+	'dramas/fetchFavoriteDramas',
+	async () => {
+		const querySnapshot = await getDocs(collection(db, 'favoriteDramas'));
+		return querySnapshot.docs.map((doc) => doc.data());
+	}
+);
+
+export const deleteFavoriteItem = createAsyncThunk(
+	'dramas/deleteFavoriteItem',
+	async (id) => {
+		await deleteDoc(doc(db, 'favoriteDramas', id.toString()));
+		return id;
+	}
+);
+
+export const addFavoriteItem = createAsyncThunk(
+	'dramas/addFavoriteItem',
+	async (drama, id) => {
+		try {
+			await setDoc(doc(db, 'favoriteDramas', id.toString()), drama);
+		} catch (e) {
+			console.error('Error adding document: ', e);
+		}
+		return drama;
+	}
+);
+
 export const dramaSlice = createSlice({
 	name: 'dramas',
 	initialState,
@@ -96,9 +129,6 @@ export const dramaSlice = createSlice({
 		},
 		setDramaDetail(state, action) {
 			state.dramaDetail = action.payload;
-		},
-		addFavoriteDrama(state, action) {
-			state.favoriteList = [...state.favoriteList, action.payload];
 		},
 	},
 	extraReducers: (builder) => {
@@ -141,16 +171,29 @@ export const dramaSlice = createSlice({
 			.addCase(fetchSearchDramas.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.searchedDramas = action.payload;
+			})
+			.addCase(fetchFavoriteDramas.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.favoriteDramas = action.payload;
+			})
+			.addCase(deleteFavoriteItem.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.favoriteDramas = state.favoriteDramas.filter(
+					(drama) => drama.id !== action.payload
+				);
+			})
+			.addCase(addFavoriteItem.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.favoriteDramas.push(action.payload);
 			});
 	},
 });
 
-export const { setDramas, setDramaDetail, addFavoriteDrama } =
-	dramaSlice.actions;
+export const { setDramas, setDramaDetail } = dramaSlice.actions;
 
 export default dramaSlice.reducer;
 
-export const genres = {
+export const genresList = {
 	28: 'Action',
 	12: 'Adventure',
 	16: 'Animation',

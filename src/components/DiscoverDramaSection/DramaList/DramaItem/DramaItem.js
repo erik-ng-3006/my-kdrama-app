@@ -1,25 +1,39 @@
 import React from 'react';
 import classes from './DramaItem.module.css';
-import { genres } from '../../../../app/dramaSlice';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { genresList } from '../../../../app/dramaSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchDramaDetail } from '../../../../app/dramaSlice';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteFavoriteItem } from '../../../../app/dramaSlice';
 
 const DramaItem = ({ drama }) => {
 	const dispatch = useDispatch();
+	const isEditFavoriteDramas = useSelector(
+		(state) => state.ui.isEditFavoriteDramas
+	);
 
 	const {
 		genre_ids,
+		genres,
 		id,
 		name,
 		original_name: originalName,
 		poster_path: posterPath,
 	} = drama;
 
-	const genresString = genre_ids
-		.filter((genre) => genres.hasOwnProperty(genre) && genre)
-		.map((genre) => genres[genre])
-		.join(', ');
+	const deleteButtonHandler = () => {
+		dispatch(deleteFavoriteItem(id));
+	};
+	const genresString =
+		genre_ids !== undefined
+			? genre_ids
+					.filter(
+						(genre) => genresList.hasOwnProperty(genre) && genre
+					)
+					.map((genre) => genresList[genre])
+					.join(', ')
+			: genres.map((genre) => genre.name).join(', ');
 
 	const itemOnclickHandler = function () {
 		dispatch(fetchDramaDetail(id));
@@ -39,6 +53,9 @@ const DramaItem = ({ drama }) => {
 				/>
 				<div className={classes.backdrop}></div>
 			</Link>
+			{isEditFavoriteDramas && (
+				<DeleteIcon onClick={deleteButtonHandler} />
+			)}
 		</li>
 	);
 };

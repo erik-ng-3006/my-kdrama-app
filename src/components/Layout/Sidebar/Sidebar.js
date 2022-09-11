@@ -5,7 +5,14 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import TvIcon from '@mui/icons-material/Tv';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import classes from './Sidebar.module.css';
+import { useDispatch } from 'react-redux';
+import { fetchFavoriteDramas } from '../../../app/dramaSlice';
+
 const Sidebar = () => {
+	const dispatch = useDispatch();
+	const favoriteButtonClickHandler = () => {
+		dispatch(fetchFavoriteDramas());
+	};
 	return (
 		<nav className={classes.sidebar}>
 			<ul>
@@ -33,7 +40,7 @@ const Sidebar = () => {
 						<span>Explore</span>
 					</a>
 				</li>
-				<li>
+				<li onClick={favoriteButtonClickHandler}>
 					<a href='/favorite'>
 						<FavoriteBorderIcon className={classes.icon} />
 						<span>Favorite</span>
