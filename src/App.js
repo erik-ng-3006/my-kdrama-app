@@ -13,10 +13,14 @@ import Layout from './components/Layout/Layout';
 import Drama from './routes/Drama';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Favorite from './routes/Favorite';
+import { setUser } from './app/userSlice';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 function App() {
 	const dramasStatus = useSelector((state) => state.dramas.status);
 	const dispatch = useDispatch();
+	const auth = getAuth();
+	const user = JSON.parse(localStorage.getItem('user'));
 
 	useEffect(() => {
 		//const dramasData = JSON.parse(localStorage.getItem('dramas'));
@@ -28,10 +32,19 @@ function App() {
 			dispatch(fetchDramas());
 			dispatch(fetchTrendingDramas());
 			dispatch(fetchNewDramas());
-			dispatch(fetchFavoriteDramas());
+			user && dispatch(fetchFavoriteDramas(user.uid));
 		}
+
+		const unsubscribe = onAuthStateChanged(auth, (user) => {
+			if (user) {
+				const convertedUser = JSON.parse(JSON.stringify(user));
+				dispatch(setUser(convertedUser));
+				localStorage.setItem('user', JSON.stringify(user));
+			}
+		});
+		return unsubscribe;
 		//}
-	}, [dramasStatus, dispatch]);
+	}, [dramasStatus, dispatch, auth, user]);
 
 	return (
 		<div className='App'>

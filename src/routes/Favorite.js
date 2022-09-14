@@ -5,10 +5,17 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toggleEditMode } from '../app/uiSlice';
-
+import { Navigate } from 'react-router-dom';
 const Favorite = () => {
 	const favoriteDramas = useSelector((state) => state.dramas.favoriteDramas);
 	const dispatch = useDispatch();
+
+	//Check if the user is logged in
+	const loggedUser = useSelector((state) => state.user.user);
+
+	if (!loggedUser) {
+		return <Navigate to='/' replace />;
+	}
 
 	const editButtonHandler = () => {
 		dispatch(toggleEditMode());

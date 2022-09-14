@@ -4,12 +4,17 @@ import Rating from '@mui/material/Rating';
 import HeartButton from '../../UI/HeartButton/HeartButton';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavoriteItem } from '../../../app/dramaSlice';
+import { addFavoriteDrama, updateFavoriteDrama } from '../../../app/dramaSlice';
+import { toggleModal } from '../../../app/uiSlice';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../../firebase/firebase';
 
 const DramaSection = ({ detail }) => {
 	const dispatch = useDispatch();
 
 	const favoriteDramas = useSelector((state) => state.dramas.favoriteDramas);
+
+	const loggedUser = JSON.parse(localStorage.getItem('user'));
 
 	const {
 		id,
@@ -26,11 +31,22 @@ const DramaSection = ({ detail }) => {
 
 	//Check if the drama is already on the favorite list
 	const isOnFavoriteList = favoriteDramas.some((drama) => drama.id === id);
-	console.log(isOnFavoriteList);
 
 	//Add drama to firestore
 	const favoriteButtonClickHandler = async () => {
-		dispatch(addFavoriteItem(detail, id));
+		if (loggedUser) {
+			const docRef = doc(db, 'user', loggedUser.uid);
+			const docSnap = await getDoc(docRef);
+			const convertedData = { [id]: { ...detail } };
+
+			if (docSnap.exists()) {
+				dispatch(updateFavoriteDrama([convertedData, loggedUser.uid]));
+			} else {
+				dispatch(addFavoriteDrama([convertedData, loggedUser.uid]));
+			}
+		} else {
+			dispatch(toggleModal());
+		}
 	};
 
 	return (

@@ -9,7 +9,9 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 } from 'firebase/auth';
+
 const LoginForm = () => {
+	const auth = getAuth(app);
 	const emailInput = useRef(null);
 	const passwordInput = useRef(null);
 
@@ -39,7 +41,6 @@ const LoginForm = () => {
 		e.preventDefault();
 		//handle log in
 		if (isLoginForm) {
-			const auth = getAuth(app);
 			signInWithEmailAndPassword(
 				auth,
 				emailInput.current.value,
@@ -47,8 +48,7 @@ const LoginForm = () => {
 			)
 				.then((userCredential) => {
 					// Signed in
-					const user = userCredential.user;
-					console.log(user);
+					//const user = userCredential.user;
 					// ...
 				})
 				.catch((error) => {
@@ -78,6 +78,7 @@ const LoginForm = () => {
 					// ..
 				});
 		}
+		dispatch(toggleModal());
 	};
 
 	return (

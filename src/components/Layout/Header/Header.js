@@ -1,15 +1,40 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 import { toggleModal } from '../../../app/uiSlice';
 import ButtonSecondary from '../../UI/ButtonSecondary/ButtonSecondary';
 import classes from './Header.module.css';
 import SearchBar from './SearchBar/SearchBar';
+import { getAuth, signOut } from 'firebase/auth';
+import { setUser } from '../../../app/userSlice';
 
 const Header = () => {
 	const dispatch = useDispatch();
+	const user = useSelector((state) => state.user.user);
+	const isLoggedIn = Object.keys(user).length !== 0;
+	const location = useLocation();
+	const navigate = useNavigate();
+
 	const buttonClickHandler = () => {
 		dispatch(toggleModal());
+	};
+
+	const logoutButtonHandler = () => {
+		const auth = getAuth();
+
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+				dispatch(setUser({}));
+				localStorage.removeItem('user');
+			})
+			.catch((error) => {
+				// An error happened.
+				console.log(error);
+			});
+		//redirect to home page if currently in favorite route
+		location.pathname === '/favorite' && navigate('/');
 	};
 	return (
 		<header className={classes.header}>
@@ -23,18 +48,29 @@ const Header = () => {
 			</Link>
 			<div>
 				<SearchBar />
-				{
+				{!isLoggedIn && (
 					<ButtonSecondary
 						onClick={buttonClickHandler}
 						className={classes.btn}
 					>
 						Login
 					</ButtonSecondary>
-				}
-				{/* <img src='/img/default-user-avatar.jpeg' width='80px' />
-				<ButtonSecondary className={classes.btn}>
-					Logout
-				</ButtonSecondary> */}
+				)}
+				{isLoggedIn && (
+					<>
+						<img
+							src='/img/default-user-avatar.jpeg'
+							width='80px'
+							alt='user profile'
+						/>
+						<ButtonSecondary
+							className={classes.btn}
+							onClick={logoutButtonHandler}
+						>
+							Logout
+						</ButtonSecondary>
+					</>
+				)}
 			</div>
 		</header>
 	);

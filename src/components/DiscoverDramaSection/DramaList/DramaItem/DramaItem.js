@@ -5,13 +5,14 @@ import { genresList } from '../../../../app/dramaSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDramaDetail } from '../../../../app/dramaSlice';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { deleteFavoriteItem } from '../../../../app/dramaSlice';
+import { deleteFavoriteDrama } from '../../../../app/dramaSlice';
 
 const DramaItem = ({ drama }) => {
 	const dispatch = useDispatch();
 	const isEditFavoriteDramas = useSelector(
 		(state) => state.ui.isEditFavoriteDramas
 	);
+	const user = useSelector((state) => state.user.user);
 
 	const {
 		genre_ids,
@@ -23,7 +24,7 @@ const DramaItem = ({ drama }) => {
 	} = drama;
 
 	const deleteButtonHandler = () => {
-		dispatch(deleteFavoriteItem(id));
+		dispatch(deleteFavoriteDrama([user.uid, id]));
 	};
 	const genresString =
 		genre_ids !== undefined

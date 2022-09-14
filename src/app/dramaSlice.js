@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { collection, getDocs } from 'firebase/firestore';
-import { doc, deleteDoc, setDoc } from 'firebase/firestore';
+import {
+	doc,
+	deleteField,
+	setDoc,
+	updateDoc,
+	getDoc,
+} from 'firebase/firestore';
 
 import axios from 'axios';
 import {
@@ -94,28 +99,47 @@ export const fetchSearchDramas = createAsyncThunk(
 
 export const fetchFavoriteDramas = createAsyncThunk(
 	'dramas/fetchFavoriteDramas',
-	async () => {
-		const querySnapshot = await getDocs(collection(db, 'favoriteDramas'));
-		return querySnapshot.docs.map((doc) => doc.data());
+	async (uid) => {
+		const docRef = doc(db, 'user', uid);
+		const docSnap = await getDoc(docRef);
+		if (docSnap.exists()) {
+			return Object.keys(docSnap.data()).map(
+				(key) => docSnap.data()[key]
+			);
+		} else {
+			// doc.data() will be undefined in this case
+			//console.log('No such document!');
+			return [];
+		}
 	}
 );
 
-export const deleteFavoriteItem = createAsyncThunk(
-	'dramas/deleteFavoriteItem',
-	async (id) => {
-		await deleteDoc(doc(db, 'favoriteDramas', id.toString()));
+export const deleteFavoriteDrama = createAsyncThunk(
+	'dramas/deleteFavoriteDrama',
+	async ([uid, id]) => {
+		await updateDoc(doc(db, 'user', uid), {
+			[id]: deleteField(),
+		});
 		return id;
 	}
 );
 
-export const addFavoriteItem = createAsyncThunk(
-	'dramas/addFavoriteItem',
-	async (drama, id) => {
+export const addFavoriteDrama = createAsyncThunk(
+	'dramas/addFavoriteDrama',
+	async ([drama, uid]) => {
 		try {
-			await setDoc(doc(db, 'favoriteDramas', id.toString()), drama);
+			await setDoc(doc(db, 'user', uid), drama);
 		} catch (e) {
 			console.error('Error adding document: ', e);
 		}
+		return drama;
+	}
+);
+
+export const updateFavoriteDrama = createAsyncThunk(
+	'dramas/updateFavoriteDrama',
+	async ([drama, uid]) => {
+		await updateDoc(doc(db, 'user', uid), drama);
 		return drama;
 	}
 );
@@ -176,13 +200,21 @@ export const dramaSlice = createSlice({
 				state.status = 'success';
 				state.favoriteDramas = action.payload;
 			})
-			.addCase(deleteFavoriteItem.fulfilled, (state, action) => {
+			.addCase(fetchFavoriteDramas.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.error.message;
+			})
+			.addCase(deleteFavoriteDrama.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.favoriteDramas = state.favoriteDramas.filter(
 					(drama) => drama.id !== action.payload
 				);
 			})
-			.addCase(addFavoriteItem.fulfilled, (state, action) => {
+			.addCase(addFavoriteDrama.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.favoriteDramas.push(action.payload);
+			})
+			.addCase(updateFavoriteDrama.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.favoriteDramas.push(action.payload);
 			});
