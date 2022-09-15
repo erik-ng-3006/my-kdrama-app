@@ -21,6 +21,7 @@ function App() {
 	const dispatch = useDispatch();
 	const auth = getAuth();
 	const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
+	console.log(user);
 
 	useEffect(() => {
 		if (dramasStatus === 'idle') {

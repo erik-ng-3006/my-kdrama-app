@@ -33,7 +33,7 @@
 	gap: 1rem;
 }
 
-.header > div img {
+.header > div > img {
 	max-width: 3rem;
 	width: 100%;
 	height: auto;
