@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import './App.css';
 import {
 	fetchDramas,
@@ -20,14 +20,9 @@ function App() {
 	const dramasStatus = useSelector((state) => state.dramas.status);
 	const dispatch = useDispatch();
 	const auth = getAuth();
-	const user = JSON.parse(localStorage.getItem('user'));
+	const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
 
 	useEffect(() => {
-		//const dramasData = JSON.parse(localStorage.getItem('dramas'));
-
-		/* if (dramasData) {
-			dispatch(setDramas(dramasData));
-		} else { */
 		if (dramasStatus === 'idle') {
 			dispatch(fetchDramas());
 			dispatch(fetchTrendingDramas());
@@ -43,7 +38,6 @@ function App() {
 			}
 		});
 		return unsubscribe;
-		//}
 	}, [dramasStatus, dispatch, auth, user]);
 
 	return (
@@ -53,7 +47,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home />}></Route>
 					<Route path='dramas/:dramaId' element={<Drama />}></Route>
-					<Route path='favorite' element={<Favorite />} />
+					<Route path='favorite' element={<Favorite />}></Route>
 					<Route
 						path='*'
 						element={
