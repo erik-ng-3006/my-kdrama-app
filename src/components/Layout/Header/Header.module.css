@@ -64,6 +64,9 @@
 	.btn {
 		display: none;
 	}
+	.header > div > img {
+		display: none;
+	}
 
 	.header {
 		padding: 2rem 1rem;
