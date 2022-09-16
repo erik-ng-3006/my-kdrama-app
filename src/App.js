@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from 'react';
-import './App.css';
 import {
 	fetchDramas,
 	fetchFavoriteDramas,

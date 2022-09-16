@@ -45,7 +45,7 @@ const Favorite = () => {
 				sx={{
 					position: 'absolute',
 					top: '1rem',
-					right: '1rem',
+					right: '4rem',
 					fontSize: '3rem',
 					transition: 'all 300ms ease-out',
 					':hover': {

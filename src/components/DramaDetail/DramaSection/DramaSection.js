@@ -31,7 +31,6 @@ const DramaSection = ({ detail }) => {
 
 	//Check if the drama is already on the favorite list
 	const isOnFavoriteList = favoriteDramas.some((drama) => drama.id === id);
-
 	//Add drama to firestore
 	const favoriteButtonClickHandler = async () => {
 		if (loggedUser) {

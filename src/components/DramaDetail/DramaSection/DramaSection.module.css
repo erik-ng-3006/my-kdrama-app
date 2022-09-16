@@ -11,7 +11,7 @@
 	right: 5rem;
 }
 
-.dramaSection > div:not(:first-child) {
+.dramaSection > div {
 	margin-top: 30rem;
 	margin-right: 10rem;
 }
@@ -38,7 +38,7 @@
 	margin-right: 1.5rem;
 }
 
-.dramaSection img {
+.dramaSection > img {
 	margin-top: 30rem;
 	max-width: 300px;
 	width: 100%;
@@ -47,4 +47,31 @@
 }
 .dramaSection p {
 	max-width: 70%;
+}
+
+@media (max-width: 1100px) {
+	.dramaSection p {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 1050px) {
+	.dramaSection {
+		display: block;
+	}
+
+	.dramaSection > div {
+		margin-top: 0;
+		margin-right: 5rem;
+		padding-top: 20rem;
+	}
+	.dramaSection > img {
+		display: none;
+	}
+}
+@media (max-width: 768px) {
+	.dramaSection > button {
+		top: 1rem;
+		right: 7rem;
+	}
 }

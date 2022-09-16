@@ -21,3 +21,15 @@
 .actorSection ul li img {
 	width: 150px;
 }
+
+@media (max-width: 865px) {
+	.actorSection ul {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 550px) {
+	.actorSection ul {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

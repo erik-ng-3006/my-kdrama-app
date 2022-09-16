@@ -3,7 +3,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import classes from './HeartButton.module.css';
 
-const HeartButton = ({ isChecked = false, onClick, ...rest }) => {
+const HeartButton = ({ isChecked, onClick, ...rest }) => {
+	//console.log(isChecked);
+
 	const [checkedHeartStyle, setCheckedHeartStyle] = useState({
 		fontSize: '3rem',
 		color: '#cb3837',
@@ -12,12 +14,25 @@ const HeartButton = ({ isChecked = false, onClick, ...rest }) => {
 		opacity: `${isChecked ? '1' : '0'}`,
 	});
 
+	console.log(isChecked ? '1' : '0');
+
 	const [uncheckedHeartStyle, setUncheckedHeartStyle] = useState({
 		fontSize: '3rem',
 		color: 'white',
 		position: 'absolute',
 		opacity: `${!isChecked ? '1' : '0'}`,
 	});
+
+	/* useEffect(() => {
+		setCheckedHeartStyle({
+			...checkedHeartStyle,
+			opacity: `${isChecked ? '1' : '0'}`,
+		});
+		setUncheckedHeartStyle({
+			...uncheckedHeartStyle,
+			opacity: `${!isChecked ? '1' : '0'}`,
+		});
+	}, [checkedHeartStyle, uncheckedHeartStyle, isChecked]); */
 
 	/* let checkedHeartStyle = {
 		fontSize: '2.5rem',
@@ -44,6 +59,9 @@ const HeartButton = ({ isChecked = false, onClick, ...rest }) => {
 			opacity: `${uncheckedHeartStyle.opacity === '0' ? '1' : '0'}`,
 		});
 		onClick();
+		/* uncheckedHeartStyle.opacity === '0'
+			? (uncheckedHeartStyle.opacity = '1')
+			: (uncheckedHeartStyle.opacity = '0'); */
 	};
 
 	return (
