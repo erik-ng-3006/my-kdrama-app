@@ -29,6 +29,9 @@
 }
 
 @media (max-width: 550px) {
+	.actorSection {
+		margin-bottom: 5rem;
+	}
 	.actorSection ul {
 		grid-template-columns: repeat(2, 1fr);
 	}
