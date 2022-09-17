@@ -188,17 +188,41 @@ export const dramaSlice = createSlice({
 				state.status = 'success';
 				state.newDramas = action.payload;
 			})
+			.addCase(fetchNewDramas.pending, (state, action) => {
+				state.status = 'loading';
+			})
+			.addCase(fetchNewDramas.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.error.message;
+			})
 			.addCase(fetchTrendingDramas.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.trendingDramas = action.payload;
+			})
+			.addCase(fetchTrendingDramas.pending, (state, action) => {
+				state.status = 'loading';
+			})
+			.addCase(fetchTrendingDramas.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.error.message;
 			})
 			.addCase(fetchSearchDramas.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.searchedDramas = action.payload;
 			})
+			.addCase(fetchSearchDramas.pending, (state, action) => {
+				state.status = 'loading';
+			})
+			.addCase(fetchSearchDramas.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.error.message;
+			})
 			.addCase(fetchFavoriteDramas.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.favoriteDramas = action.payload;
+			})
+			.addCase(fetchFavoriteDramas.pending, (state, action) => {
+				state.status = 'loading';
 			})
 			.addCase(fetchFavoriteDramas.rejected, (state, action) => {
 				state.status = 'failed';
