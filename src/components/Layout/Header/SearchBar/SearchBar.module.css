@@ -39,3 +39,11 @@
 		width: 15rem;
 	}
 }
+
+@media (max-width: 500px) {
+	.searchBar input {
+		padding: 0.8rem 1rem;
+		width: 12rem;
+		padding-right: 3rem;
+	}
+}

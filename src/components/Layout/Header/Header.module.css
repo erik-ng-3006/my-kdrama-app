@@ -64,11 +64,17 @@
 	.btn {
 		display: none;
 	}
+	.header h1 {
+		font-size: 1.7rem;
+	}
 	.header > div > img {
 		display: none;
 	}
 
 	.header {
 		padding: 2rem 1rem;
+	}
+	.header .logo {
+		max-width: 2.3rem;
 	}
 }
