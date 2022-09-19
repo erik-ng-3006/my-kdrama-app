@@ -20,9 +20,21 @@
 .login-form .form-control > input {
 	display: block;
 	width: 100%;
-	margin-bottom: 2rem;
 	padding: 1rem 1.5rem;
 	outline: none;
+	margin-bottom: 2rem;
+}
+.login-form .form-control > p {
+	color: red;
+	font-size: 1.4rem;
+	display: none;
+}
+.login-form .form-control.invalid > input {
+	margin-bottom: 0;
+}
+.login-form .form-control.invalid > p {
+	display: block;
+	margin-bottom: 2rem;
 }
 
 .login-form .form-action {

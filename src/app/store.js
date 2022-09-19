@@ -9,4 +9,11 @@ export const store = configureStore({
 		ui: uiReducer,
 		user: userReducer,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				// Ignore these action types
+				ignoredActions: ['user/setFormValues'],
+			},
+		}),
 });
