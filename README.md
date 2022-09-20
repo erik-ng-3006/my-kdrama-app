@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+<!-- Please update value in the {}  -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">My K-dramas app</h1>
 
-## Available Scripts
+<div align="center">
+  <h3>
+    <a href="https://charming-pavlova-855fff.netlify.app/">
+      Demo
+    </a>
+    <span> | </span>
+    <a href="https://github.com/erik-ng-3006/my-kdrama-app">
+      Solution
+    </a>
+  </h3>
+</div>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   [Overview](#overview)
+    -   [Built With](#built-with)
+-   [Features](#features)
+-   [Contact](#contact)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- OVERVIEW -->
 
-### `npm test`
+## Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![screenshot](https://github.com/erik-ng-3006/country-quiz-app/blob/main/public/screenshot.png)
 
-### `npm run build`
+### Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   [React](https://reactjs.org/)
+-   [Redux-Toolkit](https://redux-toolkit.js.org/)
+-   [React-router](https://reactrouter.com/)
+-   [Swiperjs](https://swiperjs.com/)
+-   [Firebase](https://firebase.google.com/)
+-   [Axios](https://axios-http.com/)
+-   CSS module
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `npm run eject`
+-   [x] User story: I can see trending a newest K-dramas
+-   [x] User story: I can see new K-dramas discover section every time when the page is loaded
+-   [x] User story: I can see the detail page of the drama
+-   [x] User story: I can sign up or login with validated value
+-   [x] User story: When I click on the heart button on the detail page I can add it to favorite list
+-   [x] User story: I can remove the drama on favorite list
+-   [x] User story: I can also use the app in mobile
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How To Use
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- Example: -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+# Clone this repository
+$ git clone https://github.com/your-user-name/your-project-name
 
-## Learn More
+# Install dependencies
+$ npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Run the app
+$ npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   GitHub [@your-username](https://github.com/erik-ng-3006)
