@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classes from './DramaSection.module.css';
 import Rating from '@mui/material/Rating';
 import HeartButton from '../../UI/HeartButton/HeartButton';
@@ -30,7 +30,10 @@ const DramaSection = ({ detail }) => {
 	const convertedRating = parseInt((rating / 2).toFixed(1));
 
 	//Check if the drama is already on the favorite list
-	const isOnFavoriteList = favoriteDramas.some((drama) => drama.id === id);
+	const isOnFavoriteList = useMemo(
+		() => favoriteDramas.some((drama) => drama.id === id),
+		[favoriteDramas, id]
+	);
 	//Add drama to firestore
 	const favoriteButtonClickHandler = async () => {
 		if (loggedUser) {

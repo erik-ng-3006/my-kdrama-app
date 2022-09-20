@@ -44,10 +44,11 @@ const SearchBar = () => {
 				<div
 					style={{
 						color: 'black',
-						backgroundColor: 'white',
+						backgroundColor: '#fff',
 						zIndex: '10000',
-						padding: '3rem 0 2rem 0',
+						padding: '3rem 1rem 2rem 1rem',
 						marginTop: '-1.5rem',
+						borderRadius: '0 0 1.2rem 1.2rem',
 					}}
 				>
 					No drama found!!!!

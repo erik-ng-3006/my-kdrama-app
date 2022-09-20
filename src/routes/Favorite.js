@@ -6,8 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toggleEditMode } from '../app/uiSlice';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../components/UI/LoadingSpinner/LoadingSpinner';
 const Favorite = () => {
 	const favoriteDramas = useSelector((state) => state.dramas.favoriteDramas);
+	const status = useSelector((state) => state.dramas.status);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	//Check if the user is logged in
@@ -27,7 +29,13 @@ const Favorite = () => {
 	};
 
 	let content;
-	if (favoriteDramas.length > 0) {
+	if (status === 'loading') {
+		content = (
+			<div className='center mg-bt-sm'>
+				<LoadingSpinner />
+			</div>
+		);
+	} else if (status !== 'loading' && favoriteDramas.length > 0) {
 		content = <FavoriteList />;
 	} else {
 		content = (
@@ -54,7 +62,7 @@ const Favorite = () => {
 					},
 				}}
 			/>
-			<h2>Wishlist</h2>
+			<h2>Watchlist</h2>
 			{content}
 			<div className='center'>
 				<Button>
