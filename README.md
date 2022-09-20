@@ -27,7 +27,10 @@
 
 ## Overview
 
-![screenshot](https://github.com/erik-ng-3006/country-quiz-app/blob/main/public/screenshot.png)
+![screenshot](https://github.com/erik-ng-3006/my-kdrama-app/blob/main/public/img/screenshot/screenshot-1.png)
+![screenshot](https://github.com/erik-ng-3006/my-kdrama-app/blob/main/public/img/screenshot/screenshot-2.png)
+![screenshot](https://github.com/erik-ng-3006/my-kdrama-app/blob/main/public/img/screenshot/screenshot-3.png)
+![screenshot](https://github.com/erik-ng-3006/my-kdrama-app/blob/main/public/img/screenshot/screenshot-4.png)
 
 ### Built With
 
@@ -70,4 +73,4 @@ $ npm start
 
 ## Contact
 
--   GitHub [@your-username](https://github.com/erik-ng-3006)
+-   GitHub [@erik-ng-3006](https://github.com/erik-ng-3006)
