@@ -5,9 +5,11 @@ import { DISCOVER_API_URL } from '../../api/api';
 import { fetchDramas } from '../../app/dramaSlice';
 import Button from '../UI/Button/Button';
 import classes from './DiscoverDramaSection.module.css';
+import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
 
 const DiscoverDramaSection = () => {
 	const dramas = useSelector((state) => state.dramas.dramas);
+	const status = useSelector((state) => state.dramas.status);
 	const dispatch = useDispatch();
 	const { page, total_page: totalPage } = dramas;
 	const btnClickHandler = () => {
@@ -19,7 +21,13 @@ const DiscoverDramaSection = () => {
 	return (
 		<section className={classes.discoverDramaSection} id='discover-section'>
 			<h2>Discover:</h2>
-			<DramaList />
+			{status === 'loading' ? (
+				<div className='center'>
+					<LoadingSpinner />
+				</div>
+			) : (
+				<DramaList />
+			)}
 			<div className='center'>
 				<a href='#discover-section'>
 					<Button onClick={btnClickHandler}>Show more</Button>
