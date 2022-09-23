@@ -18,8 +18,13 @@
 .actorSection ul li {
 	display: inline-block;
 }
+
 .actorSection ul li img {
 	width: 150px;
+}
+
+.actorSection ul li img:hover {
+	cursor: pointer;
 }
 
 @media (max-width: 865px) {

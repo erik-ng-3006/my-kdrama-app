@@ -41,7 +41,12 @@ const DramaItem = ({ drama }) => {
 	};
 
 	return (
-		<li className={classes.listItem} onClick={itemOnclickHandler}>
+		<li
+			className={`${classes.listItem} ${
+				isEditFavoriteDramas && classes.toggleDelete
+			}`}
+			onClick={itemOnclickHandler}
+		>
 			<Link to={`/dramas/${id}`}>
 				<div>
 					<h3>{name}</h3>
@@ -54,9 +59,7 @@ const DramaItem = ({ drama }) => {
 				/>
 				<div className={classes.backdrop}></div>
 			</Link>
-			{isEditFavoriteDramas && (
-				<DeleteIcon onClick={deleteButtonHandler} />
-			)}
+			<DeleteIcon onClick={deleteButtonHandler} />
 		</li>
 	);
 };

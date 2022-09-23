@@ -5,6 +5,7 @@ const initialState = {
 	isLoginForm: true,
 	isEditFavoriteDramas: false,
 	isShowMobilNavigation: false,
+	isShowActorModal: false,
 };
 
 export const uiSlice = createSlice({
@@ -23,6 +24,9 @@ export const uiSlice = createSlice({
 		toggleMobilNavigation(state) {
 			state.isShowMobilNavigation = !state.isShowMobilNavigation;
 		},
+		toggleShowActorModal(state) {
+			state.isShowActorModal = !state.isShowActorModal;
+		},
 	},
 });
 
@@ -31,6 +35,7 @@ export const {
 	toggleLoginForm,
 	toggleEditMode,
 	toggleMobilNavigation,
+	toggleShowActorModal,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

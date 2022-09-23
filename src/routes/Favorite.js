@@ -7,6 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { toggleEditMode } from '../app/uiSlice';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/UI/LoadingSpinner/LoadingSpinner';
+
 const Favorite = () => {
 	const favoriteDramas = useSelector((state) => state.dramas.favoriteDramas);
 	const status = useSelector((state) => state.dramas.status);

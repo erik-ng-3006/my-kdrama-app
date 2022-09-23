@@ -4,9 +4,12 @@ import ActorSection from './ActorSection/ActorSection';
 import classes from './DramaDetail.module.css';
 import DramaSection from './DramaSection/DramaSection';
 import TrailerSection from './TrailerSection/TrailerSection';
+import Modal from '../Layout/Modal/Modal';
+import ActorDetail from './ActorSection/ActorDetail/ActorDetail';
 
 const DramaDetail = () => {
 	const detail = useSelector((state) => state.dramas.dramaDetail);
+	const isShowActorModal = useSelector((state) => state.ui.isShowActorModal);
 
 	const backdropPath = detail['backdrop_path'] || '';
 	const backdrop =
@@ -16,6 +19,11 @@ const DramaDetail = () => {
 
 	return (
 		<section className={classes.dramaDetail}>
+			{isShowActorModal && (
+				<Modal>
+					<ActorDetail />
+				</Modal>
+			)}
 			<div
 				className={classes.backdrop}
 				style={{
