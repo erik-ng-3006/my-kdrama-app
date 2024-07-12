@@ -1,0 +1,66 @@
+.login-form {
+	position: relative;
+	background-color: #212529;
+	z-index: 10001;
+	width: 40rem;
+	padding: 5rem;
+	border-radius: 1.2rem;
+}
+
+.login-form > h2 {
+	margin-bottom: 5rem;
+	font-size: 2.5rem;
+}
+
+.login-form .form-control > label {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+.login-form .form-control > input {
+	display: block;
+	width: 100%;
+	padding: 1rem 1.5rem;
+	outline: none;
+	margin-bottom: 2rem;
+}
+.login-form .form-control > p {
+	color: red;
+	font-size: 1.4rem;
+	display: none;
+}
+.login-form .form-control.invalid > input {
+	margin-bottom: 0;
+}
+.login-form .form-control.invalid > p {
+	display: block;
+	margin-bottom: 2rem;
+}
+
+.login-form .form-action {
+	text-align: center;
+}
+
+.login-form > p {
+	text-align: center;
+	font-size: 1.4rem;
+	margin-top: 1rem;
+}
+
+.login-form > p > span {
+	color: #3b71ca;
+}
+
+.login-form > p > span:hover {
+	cursor: pointer;
+}
+
+.login-form .closeBtn {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	font-size: 2.5rem;
+}
+.login-form .closeBtn:hover {
+	cursor: pointer;
+}

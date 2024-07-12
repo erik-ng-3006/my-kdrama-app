@@ -1,0 +1,43 @@
+.actorSection {
+	text-align: center;
+	margin-bottom: 10rem;
+}
+
+.actorSection h4 {
+	font-size: 2.5rem;
+	margin-bottom: 3rem;
+}
+
+.actorSection ul {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	list-style: none;
+	gap: 3rem;
+}
+
+.actorSection ul li {
+	display: inline-block;
+}
+
+.actorSection ul li img {
+	width: 150px;
+}
+
+.actorSection ul li img:hover {
+	cursor: pointer;
+}
+
+@media (max-width: 865px) {
+	.actorSection ul {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 550px) {
+	.actorSection {
+		margin-bottom: 5rem;
+	}
+	.actorSection ul {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

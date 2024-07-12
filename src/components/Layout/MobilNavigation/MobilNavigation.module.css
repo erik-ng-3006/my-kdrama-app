@@ -1,0 +1,38 @@
+.mobil-navigation {
+	font-size: 1.8rem;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	z-index: 11000;
+}
+
+.mobil-navigation > div {
+	font-size: 3rem;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
+.mobil-navigation > div:hover {
+	cursor: pointer;
+}
+
+.mobil-navigation ul {
+	height: 100%;
+	display: grid;
+	place-content: center;
+	list-style: none;
+}
+
+.mobil-navigation ul li:not(:last-child) {
+	margin-bottom: 2.5rem;
+}
+
+.mobil-navigation ul li:first-child {
+	margin-bottom: 4rem;
+}
+
+.mobil-navigation ul li a {
+	color: white;
+	text-decoration: none;
+}

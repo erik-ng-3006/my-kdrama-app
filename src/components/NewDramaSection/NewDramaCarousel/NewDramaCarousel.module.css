@@ -1,0 +1,64 @@
+.newDramaCarousel {
+	position: relative;
+	margin-bottom: 3rem;
+}
+
+.newDramaItem {
+	height: 100%;
+	transition: all 300ms ease-out;
+}
+.newDramaItem img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.newDramaItem a {
+	text-decoration: none;
+	color: white;
+}
+.newDramaItem h3 {
+	font-size: 1.8rem;
+}
+.newDramaItem h4 {
+	font-size: 1.4rem;
+}
+.newDramaItem p {
+	font-size: 1.4rem;
+}
+
+.newDramaItem:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.newDramaItem div:first-child {
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+	z-index: 100;
+}
+
+.newDramaItem .backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	transition: background-color 300ms ease-out;
+}
+.newDramaItem:hover .backdrop {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1050px) {
+	.newDramaItem h3 {
+		font-size: 1.5rem;
+	}
+	.newDramaItem h4 {
+		font-size: 1.2rem;
+	}
+	.newDramaItem p {
+		font-size: 1.2rem;
+	}
+}

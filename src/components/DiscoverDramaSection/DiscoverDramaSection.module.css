@@ -1,0 +1,9 @@
+.discoverDramaSection {
+	padding-top: 8rem;
+}
+
+@media (max-width: 768px) {
+	.discoverDramaSection {
+		padding-top: 4rem;
+	}
+}

@@ -1,0 +1,61 @@
+.trendingDramas {
+	position: relative;
+}
+
+.trendingDramasItem {
+	transition: all 300ms ease-out;
+}
+.trendingDramasItem img {
+	width: 100%;
+	height: fit-content(20em);
+}
+.trendingDramasItem a {
+	text-decoration: none;
+	color: white;
+}
+.trendingDramasItem h3 {
+	font-size: 1.8rem;
+}
+.trendingDramasItem h4 {
+	font-size: 1.4rem;
+}
+.trendingDramasItem p {
+	font-size: 1.4rem;
+}
+
+.trendingDramasItem:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.trendingDramasItem div:first-child {
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+	z-index: 100;
+}
+
+.trendingDramasItem .backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	transition: background-color 300ms ease-out;
+}
+.trendingDramasItem:hover .backdrop {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1050px) {
+	.trendingDramasItem h3 {
+		font-size: 1.5rem;
+	}
+	.trendingDramasItem h4 {
+		font-size: 1.2rem;
+	}
+	.trendingDramasItem p {
+		font-size: 1.2rem;
+	}
+}

@@ -1,0 +1,48 @@
+.sidebar {
+	position: fixed;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	padding: 0 2rem;
+	z-index: 10000;
+}
+
+.sidebar ul {
+	list-style: none;
+}
+
+.sidebar ul li:hover {
+	cursor: pointer;
+}
+
+.sidebar ul li:hover span {
+	color: #3b71ca;
+}
+
+.sidebar ul li:not(:last-child) {
+	margin-bottom: 4rem;
+}
+
+.sidebar ul li a {
+	color: white;
+	text-decoration: none;
+}
+.sidebar ul li a span {
+	display: block;
+}
+
+.icon {
+	font-size: 3rem !important;
+}
+
+.sidebar ul li:hover .icon {
+	color: #3b71ca;
+}
+
+@media (max-width: 768px) {
+	.sidebar {
+		display: none;
+	}
+}

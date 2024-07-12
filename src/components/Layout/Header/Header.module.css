@@ -1,0 +1,80 @@
+.header {
+	position: fixed;
+	z-index: 1000;
+	min-width: 100vw;
+	padding: 2rem 15rem;
+	display: flex;
+	justify-content: space-between;
+	background-color: #000;
+}
+
+.header a {
+	color: white;
+	text-decoration: none;
+}
+
+.header .logo {
+	max-width: 3.5rem;
+	width: 100%;
+	height: auto;
+}
+
+.header h1 {
+	font-family: 'Pacifico', cursive;
+	text-transform: uppercase;
+	font-size: 2.5rem;
+	display: inline-block;
+	margin-left: 1rem;
+}
+
+.header > div {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.header > div > img {
+	max-width: 3rem;
+	width: 100%;
+	height: auto;
+	border-radius: 50%;
+}
+
+@media (max-width: 1050px) {
+	.header {
+		padding: 2rem 7rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.header {
+		padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+	}
+
+	.header h1 {
+		font-size: 2rem;
+	}
+
+	.header img {
+		max-width: 3rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.btn {
+		display: none;
+	}
+	.header h1 {
+		font-size: 1.7rem;
+	}
+	.header > div > img {
+		display: none;
+	}
+
+	.header {
+		padding: 2rem 1rem;
+	}
+	.header .logo {
+		max-width: 2.3rem;
+	}
+}
