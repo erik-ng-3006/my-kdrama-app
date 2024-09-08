@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import classes from './SearchBar.module.css';
 import SearchList from './SearchList/SearchList';
@@ -10,11 +10,13 @@ import { useSelector } from 'react-redux';
 const SearchBar = () => {
 	const [inputValue, setInputValue] = useState('');
 	const [isShowSearchList, setIsShowSearchList] = useState(false);
+	const inputRef = useRef(null); // Add ref for the input
 
 	const dispatch = useDispatch();
 	const searchedDramas = useSelector((state) => state.dramas.searchedDramas);
 
 	const { results } = searchedDramas;
+
 	const inputChangeHandler = (e) => {
 		setIsShowSearchList(true);
 		setInputValue(e.target.value);
@@ -30,6 +32,20 @@ const SearchBar = () => {
 		setIsShowSearchList(false);
 	};
 
+	// Add useEffect to handle clicks outside the input
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (inputRef.current && !inputRef.current.contains(event.target)) {
+				setIsShowSearchList(false);
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+
 	return (
 		<div className={classes.searchBar}>
 			<input
@@ -38,6 +54,7 @@ const SearchBar = () => {
 				placeholder='Search K-drama'
 				onChange={inputChangeHandler}
 				onFocus={inputFocusHandler}
+				ref={inputRef} // Attach ref to the input
 			></input>
 			<SearchIcon className={classes.icon} />
 			{inputValue !== '' && results && results.length === 0 && (
