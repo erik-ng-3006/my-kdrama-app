@@ -11,6 +11,7 @@ const SearchBar = () => {
 	const [inputValue, setInputValue] = useState('');
 	const [isShowSearchList, setIsShowSearchList] = useState(false);
 	const inputRef = useRef(null); // Add ref for the input
+	const searchListRef = useRef(null); // Add ref for the SearchList
 
 	const dispatch = useDispatch();
 	const searchedDramas = useSelector((state) => state.dramas.searchedDramas);
@@ -32,10 +33,15 @@ const SearchBar = () => {
 		setIsShowSearchList(false);
 	};
 
-	// Add useEffect to handle clicks outside the input
+	// Add useEffect to handle clicks outside the input and the SearchList
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-			if (inputRef.current && !inputRef.current.contains(event.target)) {
+			if (
+				inputRef.current &&
+				!inputRef.current.contains(event.target) &&
+				searchListRef.current &&
+				!searchListRef.current.contains(event.target)
+			) {
 				setIsShowSearchList(false);
 			}
 		};
@@ -44,7 +50,7 @@ const SearchBar = () => {
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
-	}, []);
+	}, [inputRef, searchListRef]);
 
 	return (
 		<div className={classes.searchBar}>
@@ -73,8 +79,9 @@ const SearchBar = () => {
 			)}
 			{isShowSearchList && results && results.length > 0 && (
 				<SearchList
+					ref={searchListRef}
 					dramas={results}
-					isShowSearchList={isShowSearchList}
+					setIsShowSearchList={setIsShowSearchList}
 				/>
 			)}
 		</div>

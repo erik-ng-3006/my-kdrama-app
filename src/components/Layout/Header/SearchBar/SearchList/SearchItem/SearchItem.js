@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchDramaDetail } from '../../../../../../app/dramaSlice';
 
-const SearchItem = ({ drama }) => {
+const SearchItem = ({ drama, setIsShowSearchList }) => {
 	const dispatch = useDispatch();
 	const { id, name, poster_path: posterPath } = drama;
 
@@ -14,6 +14,7 @@ const SearchItem = ({ drama }) => {
 
 	const itemClickHandler = () => {
 		dispatch(fetchDramaDetail(id));
+		setIsShowSearchList(false);
 	};
 
 	return (

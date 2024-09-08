@@ -4,11 +4,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://my-k-dramas.netlify.app/">
+    <a href="https://my-k-dramas.netlify.app/" target="_blank">
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/erik-ng-3006/my-kdrama-app">
+    <a href="https://github.com/erik-ng-3006/my-kdrama-app" target="_blank">
       Solution
     </a>
   </h3>
