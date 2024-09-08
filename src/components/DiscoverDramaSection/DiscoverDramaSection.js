@@ -18,6 +18,7 @@ const DiscoverDramaSection = () => {
 
 		dispatch(fetchDramas(url));
 	};
+
 	return (
 		<section className={classes.discoverDramaSection} id='discover-section'>
 			<h2>Discover:</h2>

@@ -4,7 +4,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://charming-pavlova-855fff.netlify.app/">
+    <a href="https://my-k-dramas.netlify.app/">
       Demo
     </a>
     <span> | </span>

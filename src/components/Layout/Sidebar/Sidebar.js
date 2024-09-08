@@ -23,19 +23,19 @@ const Sidebar = () => {
 					</a>
 				</li>
 				<li>
-					<a href='#trending-section'>
+					<a href='/#trending-section'>
 						<LocalFireDepartmentIcon className={classes.icon} />
 						<span>Trending</span>
 					</a>
 				</li>
 				<li>
-					<a href='#new-drama-section'>
+					<a href='/#new-drama-section'>
 						<TvIcon className={classes.icon} />
 						<span>Kdramas</span>
 					</a>
 				</li>
 				<li>
-					<a href='#discover-section'>
+					<a href='/#discover-section'>
 						<ExploreIcon className={classes.icon} />
 						<span>Explore</span>
 					</a>

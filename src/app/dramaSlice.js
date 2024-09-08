@@ -27,6 +27,8 @@ const initialState = {
 	favoriteDramas: [],
 	status: 'idle',
 	error: null,
+	searchStatus: 'idle',
+	searchError: null,
 };
 
 export const fetchDramas = createAsyncThunk('dramas/fetchDramas', async () => {
@@ -206,16 +208,16 @@ export const dramaSlice = createSlice({
 				state.status = 'failed';
 				state.error = action.error.message;
 			})
+			.addCase(fetchSearchDramas.pending, (state, action) => {
+				state.searchStatus = 'loading';
+			})
 			.addCase(fetchSearchDramas.fulfilled, (state, action) => {
-				state.status = 'success';
+				state.searchStatus = 'success';
 				state.searchedDramas = action.payload;
 			})
-			.addCase(fetchSearchDramas.pending, (state, action) => {
-				state.status = 'loading';
-			})
 			.addCase(fetchSearchDramas.rejected, (state, action) => {
-				state.status = 'failed';
-				state.error = action.error.message;
+				state.searchStatus = 'failed';
+				state.searchError = action.error.message;
 			})
 			.addCase(fetchFavoriteDramas.fulfilled, (state, action) => {
 				state.status = 'success';
