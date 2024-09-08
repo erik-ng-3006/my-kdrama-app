@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classes from './SearchList.module.css';
 import SearchItem from './SearchItem/SearchItem';
 
-const SearchList = ({ dramas }) => {
+const SearchList = forwardRef(({ dramas, setIsShowSearchList }, ref) => {
 	return (
-		<ul className={classes.searchList}>
+		<ul ref={ref} className={classes.searchList}>
 			{dramas &&
 				dramas.slice(0, 5).map((drama) => {
-					return <SearchItem key={drama.id} drama={drama} />;
+					return (
+						<SearchItem
+							key={drama.id}
+							drama={drama}
+							setIsShowSearchList={setIsShowSearchList}
+						/>
+					);
 				})}
 		</ul>
 	);
-};
+});
 
 export default SearchList;
